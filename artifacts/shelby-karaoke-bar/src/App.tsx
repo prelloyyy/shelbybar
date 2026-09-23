@@ -15,6 +15,11 @@ import {
   Sparkles,
   X,
 } from 'lucide-react';
+import smokeImage from '@assets/image_1790195298619.png';
+import barImage from '@assets/image_1790195370683.png';
+import friendsImage from '@assets/image_1790195584156.png';
+import afterMidnightImage from '@assets/image_1790195712617.png';
+import hallVideo from '@assets/video_2026-09-23_23-30-41_1790195522389.mp4';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -221,6 +226,68 @@ const navItems = [
   { href: '#contacts', label: 'Контакты' },
 ];
 
+type GalleryTile = {
+  code: string;
+  label: string;
+  media?: {
+    kind: 'image' | 'video';
+    src: string;
+    alt: string;
+  };
+};
+
+const galleryTiles: GalleryTile[] = [
+  {
+    code: '01 / room',
+    label: 'Зал',
+    media: {
+      kind: 'video',
+      src: hallVideo,
+      alt: 'Видео из зала караоке-бара Шелби',
+    },
+  },
+  {
+    code: '02 / bar',
+    label: 'Бар',
+    media: {
+      kind: 'image',
+      src: barImage,
+      alt: 'Авторский коктейль в баре Шелби',
+    },
+  },
+  {
+    code: '03 / sound',
+    label: 'Громче',
+  },
+  {
+    code: '04 / night',
+    label: 'После полуночи',
+    media: {
+      kind: 'image',
+      src: afterMidnightImage,
+      alt: 'Гости танцуют после полуночи в Шелби',
+    },
+  },
+  {
+    code: '05 / friends',
+    label: 'Свои люди',
+    media: {
+      kind: 'image',
+      src: friendsImage,
+      alt: 'Гости отдыхают в атмосфере Шелби',
+    },
+  },
+  {
+    code: '06 / smoke',
+    label: 'Дым',
+    media: {
+      kind: 'image',
+      src: smokeImage,
+      alt: 'Дым и свет в караоке-зале Шелби',
+    },
+  },
+];
+
 function useReveal() {
   useEffect(() => {
     const nodes = document.querySelectorAll<HTMLElement>('.reveal');
@@ -400,15 +467,20 @@ function Home() {
                 <span className="eyebrow">03 / Галерея</span>
                 <h2 id="gallery-title">Здесь<br />громче</h2>
               </div>
-              <p>Тёплый свет, следы ночи и тот самый момент перед первым припевом. Скоро здесь будут ваши кадры.</p>
+              <p>Тёплый свет, следы ночи и тот самый момент перед первым припевом. Смотрите, как это бывает у нас.</p>
             </div>
             <div className="gallery-grid reveal reveal-delay-1" aria-label="Галерея атмосферы Шелби">
-              <div className="gallery-tile"><small>01 / room</small><span>Зал</span></div>
-              <div className="gallery-tile"><small>02 / bar</small><span>Бар</span></div>
-              <div className="gallery-tile"><small>03 / sound</small><span>Громче</span></div>
-              <div className="gallery-tile"><small>04 / night</small><span>После полуночи</span></div>
-              <div className="gallery-tile"><small>05 / friends</small><span>Свои люди</span></div>
-              <div className="gallery-tile"><small>06 / smoke</small><span>Дым</span></div>
+              {galleryTiles.map((tile) => (
+                <div className={`gallery-tile${tile.media ? ' has-media' : ''}`} key={tile.label}>
+                  {tile.media?.kind === 'video' ? (
+                    <video className="gallery-media" src={tile.media.src} autoPlay muted loop playsInline preload="metadata" aria-label={tile.media.alt} />
+                  ) : tile.media ? (
+                    <img className="gallery-media" src={tile.media.src} alt={tile.media.alt} loading="lazy" />
+                  ) : null}
+                  <small>{tile.code}</small>
+                  <span>{tile.label}</span>
+                </div>
+              ))}
             </div>
           </div>
         </section>
