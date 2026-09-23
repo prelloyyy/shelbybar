@@ -575,8 +575,28 @@ a:focus-visible {
     linear-gradient(155deg, #544035, #1d1815 54%, #8f4c2d);
 }
 
+.about-card-media,
+.about-card-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.about-card-media {
+  z-index: 0;
+  object-fit: cover;
+  filter: saturate(.72) contrast(1.04) brightness(.72);
+}
+
+.about-card-overlay {
+  z-index: 1;
+  background: linear-gradient(145deg, rgba(14, 13, 12, .1), rgba(14, 13, 12, .76));
+}
+
 .about-card::before {
   position: absolute;
+  z-index: 2;
   right: 16%;
   bottom: 16%;
   width: 58%;
@@ -588,6 +608,7 @@ a:focus-visible {
 
 .about-card::after {
   position: absolute;
+  z-index: 2;
   top: 17%;
   left: 15%;
   width: 42%;
@@ -599,6 +620,7 @@ a:focus-visible {
 
 .about-card-label {
   position: absolute;
+  z-index: 3;
   right: 1.5rem;
   bottom: 1.5rem;
   color: rgba(238, 233, 223, .74);

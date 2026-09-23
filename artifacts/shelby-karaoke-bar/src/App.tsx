@@ -20,6 +20,8 @@ import barImage from '@assets/image_1790195370683.png';
 import friendsImage from '@assets/image_1790195584156.png';
 import afterMidnightImage from '@assets/image_1790195712617.png';
 import hallVideo from '@assets/video_2026-09-23_23-30-41_1790195522389.mp4';
+import louderImage from '@assets/image_1790195941103.png';
+import nightSideImage from '@assets/image_1790196199738.png';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -258,6 +260,11 @@ const galleryTiles: GalleryTile[] = [
   {
     code: '03 / sound',
     label: 'Громче',
+    media: {
+      kind: 'image',
+      src: louderImage,
+      alt: 'Звуковое оборудование и микрофон в Шелби',
+    },
   },
   {
     code: '04 / night',
@@ -401,7 +408,7 @@ function Home() {
             <p className="hero-subtitle reveal reveal-delay-2">Караоке-бар в стиле лихих времён</p>
             <div className="hero-meta reveal reveal-delay-2">
               <div><strong>Где</strong>ул. 50 лет НЛМК, 2А</div>
-              <div><strong>Когда</strong>Ежедневно до 02:00</div>
+              <div><strong>Когда</strong>Пн–Чт до 00:00<br />Пт до 04:00 · Сб до 05:00</div>
             </div>
             <div className="hero-actions reveal reveal-delay-3">
               <a className="button-primary" href={phoneHref}><Phone size={16} aria-hidden="true" /> Забронировать стол</a>
@@ -432,6 +439,8 @@ function Home() {
                 </div>
               </div>
               <div className="about-card reveal reveal-delay-2" aria-label="Атмосфера бара">
+                <img className="about-card-media" src={nightSideImage} alt="Компания друзей отдыхает за столом в Шелби" />
+                <div className="about-card-overlay" aria-hidden="true" />
                 <div className="about-card-label">ночь<br />на нашей<br />стороне</div>
               </div>
             </div>
@@ -494,7 +503,7 @@ function Home() {
               <div className="contact-list">
                 <a className="contact-item" href="https://yandex.ru/maps/?ll=39.594675%2C52.593719&z=16&text=%D0%B3.%20%D0%9B%D0%B8%D0%BF%D0%B5%D1%86%D0%BA%2C%20%D1%83%D0%BB.%2050%20%D0%BB%D0%B5%D1%82%20%D0%9D%D0%9B%D0%9C%D0%9A%2C%202%D0%90" target="_blank" rel="noreferrer"><MapPin size={19} aria-hidden="true" /><span><strong>г. Липецк, ул. 50 лет НЛМК, 2А</strong></span><ArrowUpRight size={15} aria-hidden="true" /></a>
                 <a className="contact-item" href={phoneHref}><Phone size={19} aria-hidden="true" /><span><strong>+7 (919) 166-03-31</strong></span><ArrowUpRight size={15} aria-hidden="true" /></a>
-                <div className="contact-item"><Clock3 size={19} aria-hidden="true" /><span>Режим работы: <strong>ежедневно до 02:00</strong></span></div>
+                 <div className="contact-item"><Clock3 size={19} aria-hidden="true" /><span>Режим работы:<br /><strong>Пн–Чт до 00:00 · Пт до 04:00 · Сб до 05:00</strong></span></div>
               </div>
               <a className="button-primary" href={phoneHref}><Phone size={16} aria-hidden="true" /> Позвонить и забронировать</a>
               <div className="socials" aria-label="Социальные сети">
