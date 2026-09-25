@@ -232,7 +232,11 @@ a:focus-visible {
   display: none;
   align-items: center;
   gap: 0.5rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: hsl(var(--primary));
+  cursor: pointer;
   font-size: 0.68rem;
   font-weight: 800;
   letter-spacing: 0.1em;
@@ -439,11 +443,46 @@ a:focus-visible {
 }
 
 .button-primary {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.button-primary {
   background: hsl(var(--primary));
   color: hsl(var(--primary-foreground));
 }
 
 .button-primary:hover { transform: translateY(-2px); background: hsl(18 78% 61%); }
+
+.booking-dialog {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin: auto;
+  width: min(92vw, 440px);
+  max-width: none;
+  max-height: 85vh;
+  gap: 1.25rem;
+  border: 1px solid rgba(232, 98, 44, .5);
+  border-radius: 3px;
+  background: #1b1917;
+  color: hsl(var(--foreground));
+  padding: 2rem;
+}
+
+.booking-dialog::backdrop { background: rgba(0, 0, 0, .82); backdrop-filter: blur(4px); }
+.booking-dialog-close { position: absolute; top: .8rem; right: .8rem; display: grid; width: 36px; height: 36px; place-items: center; border: 1px solid rgba(238, 233, 223, .2); background: transparent; color: hsl(var(--foreground)); cursor: pointer; }
+.booking-dialog-close:hover { color: hsl(var(--accent)); border-color: hsl(var(--accent)); }
+.booking-dialog-close svg { width: 17px; height: 17px; }
+.booking-dialog-header { display: flex; flex-direction: column; gap: .7rem; padding-right: 1.5rem; }
+.booking-dialog-title { color: hsl(var(--foreground)); font-family: var(--app-font-serif); font-size: 1.65rem; line-height: 1.15; text-transform: uppercase; }
+.booking-dialog-description { color: hsl(var(--muted-foreground)); font-size: .9rem; line-height: 1.6; }
+.booking-dialog-phone { color: hsl(var(--accent)); font-size: clamp(1.45rem, 5vw, 1.85rem); font-weight: 800; letter-spacing: .03em; text-decoration: none; }
+.booking-dialog-phone:hover { text-decoration: underline; text-underline-offset: .25em; }
+.booking-dialog-call { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: .6rem; border: 1px solid hsl(var(--primary)); background: hsl(var(--primary)); color: hsl(var(--primary-foreground)); font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-decoration: none; text-transform: uppercase; transition: background 180ms ease, transform 180ms ease; }
+.booking-dialog-call:hover { transform: translateY(-2px); background: hsl(18 78% 61%); }
 
 .button-ghost {
   border-color: rgba(238, 233, 223, .34);

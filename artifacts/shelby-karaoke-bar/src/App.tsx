@@ -316,7 +316,7 @@ function useReveal() {
   }, []);
 }
 
-function Header({ menuOpen, onToggle }: { menuOpen: boolean; onToggle: () => void }) {
+function Header({ menuOpen, onToggle, onBook }: { menuOpen: boolean; onToggle: () => void; onBook: () => void }) {
   const closeOnNavigate = () => {
     if (menuOpen) onToggle();
   };
@@ -330,9 +330,9 @@ function Header({ menuOpen, onToggle }: { menuOpen: boolean; onToggle: () => voi
         <nav className="desktop-nav" aria-label="Основная навигация">
           {navItems.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}
         </nav>
-        <a className="header-book" href={phoneHref}>
+        <button className="header-book" type="button" onClick={onBook}>
           <Phone aria-hidden="true" /> Забронировать стол
-        </a>
+        </button>
         <button className="menu-toggle" type="button" onClick={onToggle} aria-expanded={menuOpen} aria-controls="mobile-navigation" aria-label={menuOpen ? 'Закрыть меню' : 'Открыть меню'}>
           {menuOpen ? <X aria-hidden="true" /> : <MenuIcon aria-hidden="true" />}
         </button>
@@ -381,7 +381,16 @@ function MenuCategoryList({ categories, isBar }: { categories: MenuCategory[]; i
 function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuTab, setMenuTab] = useState<'kitchen' | 'bar'>('kitchen');
+  const [bookingOpen, setBookingOpen] = useState(false);
+  const bookingDialogRef = useRef<HTMLDialogElement>(null);
   useReveal();
+
+  useEffect(() => {
+    const dialog = bookingDialogRef.current;
+    if (!dialog) return;
+    if (bookingOpen && !dialog.open) dialog.showModal();
+    if (!bookingOpen && dialog.open) dialog.close();
+  }, [bookingOpen]);
 
   useEffect(() => {
     document.title = 'Шелби — караоке-бар в Липецке';
@@ -397,7 +406,11 @@ function Home() {
 
   return (
     <div id="top">
-      <Header menuOpen={menuOpen} onToggle={() => setMenuOpen((open) => !open)} />
+      <Header
+        menuOpen={menuOpen}
+        onToggle={() => setMenuOpen((open) => !open)}
+        onBook={() => setBookingOpen(true)}
+      />
 
       <main>
         <section className="hero" aria-labelledby="hero-title">
@@ -411,7 +424,7 @@ function Home() {
               <div><strong>Когда</strong>Пн–Чт до 00:00<br />Пт до 04:00 · Сб до 05:00</div>
             </div>
             <div className="hero-actions reveal reveal-delay-3">
-              <a className="button-primary" href={phoneHref}><Phone size={16} aria-hidden="true" /> Забронировать стол</a>
+              <button className="button-primary" type="button" onClick={() => setBookingOpen(true)}><Phone size={16} aria-hidden="true" /> Забронировать стол</button>
               <a className="button-ghost" href="#menu">Открыть меню <ArrowDown size={16} aria-hidden="true" /></a>
             </div>
           </div>
@@ -505,7 +518,7 @@ function Home() {
                 <a className="contact-item" href={phoneHref}><Phone size={19} aria-hidden="true" /><span><strong>+7 (919) 166-03-31</strong></span><ArrowUpRight size={15} aria-hidden="true" /></a>
                  <div className="contact-item"><Clock3 size={19} aria-hidden="true" /><span>Режим работы:<br /><strong>Пн–Чт до 00:00 · Пт до 04:00 · Сб до 05:00</strong></span></div>
               </div>
-              <a className="button-primary" href={phoneHref}><Phone size={16} aria-hidden="true" /> Позвонить и забронировать</a>
+              <button className="button-primary" type="button" onClick={() => setBookingOpen(true)}><Phone size={16} aria-hidden="true" /> Позвонить и забронировать</button>
               <div className="socials" aria-label="Социальные сети">
                 <a href="https://t.me/s/shelbybarlip" target="_blank" rel="noreferrer" aria-label="Telegram"><Send size={17} aria-hidden="true" /></a>
                 <a href="https://wa.me/79191660331" target="_blank" rel="noreferrer" aria-label="WhatsApp"><Phone size={17} aria-hidden="true" /></a>
@@ -530,6 +543,34 @@ function Home() {
           <div className="footer-age">18+</div>
         </div>
       </footer>
+
+      <dialog
+        ref={bookingDialogRef}
+        className="booking-dialog"
+        aria-labelledby="booking-dialog-title"
+        aria-describedby="booking-dialog-description"
+        onClose={() => setBookingOpen(false)}
+      >
+        <button
+          className="booking-dialog-close"
+          type="button"
+          onClick={() => setBookingOpen(false)}
+          aria-label="Закрыть окно бронирования"
+        >
+          <X aria-hidden="true" />
+        </button>
+        <div className="booking-dialog-header">
+          <h2 className="booking-dialog-title" id="booking-dialog-title">Забронировать стол</h2>
+          <p className="booking-dialog-description" id="booking-dialog-description">
+            Позвоните нам — поможем выбрать стол и ответим на вопросы.
+          </p>
+        </div>
+          <a className="booking-dialog-phone" href={phoneHref}>+7 (919) 166-03-31</a>
+          <a className="booking-dialog-call" href={phoneHref}>
+            <Phone size={17} aria-hidden="true" />
+            Позвонить
+          </a>
+      </dialog>
 
       <a className="floating-call" href={phoneHref} aria-label="Позвонить и забронировать стол"><Phone aria-hidden="true" /></a>
     </div>
