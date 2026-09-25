@@ -22,6 +22,7 @@ import afterMidnightImage from '@assets/image_1790195712617.png';
 import hallVideo from '@assets/video_2026-09-23_23-30-41_1790195522389.mp4';
 import louderImage from '@assets/image_1790195941103.png';
 import nightSideImage from '@assets/image_1790196199738.png';
+import heroImage from '@assets/shelby-hero.jpg';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -414,6 +415,7 @@ function Home() {
 
       <main>
         <section className="hero" aria-labelledby="hero-title">
+          <img className="hero-image" src={heroImage} alt="" aria-hidden="true" />
           <div className="hero-scratch" aria-hidden="true" />
           <div className="hero-content">
             <div className="hero-kicker reveal"><span /> Липецк / 50 лет НЛМК</div>
