@@ -23,6 +23,7 @@ import hallVideo from '@assets/video_2026-09-23_23-30-41_1790195522389.mp4';
 import louderImage from '@assets/image_1790195941103.png';
 import nightSideImage from '@assets/image_1790196199738.png';
 import heroImage from '@assets/shelby-hero.jpg';
+import brandLogo from '@assets/62216AAC-31A6-454A-8404-222CC6DDBE28_1790390503453.png';
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -325,8 +326,7 @@ function Header({ menuOpen, onToggle, onBook }: { menuOpen: boolean; onToggle: (
     <header className="site-header">
       <div className="shell header-inner">
         <a className="brand-mark" href="#top" aria-label="Шелби, на главную">
-          <strong>ШЕЛБИ</strong>
-          <span>Караоке-бар</span>
+          <img className="brand-logo" src={brandLogo} alt="Шелби — бар и караоке" />
         </a>
         <nav className="desktop-nav" aria-label="Основная навигация">
           {navItems.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}

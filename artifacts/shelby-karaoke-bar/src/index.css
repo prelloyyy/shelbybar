@@ -173,10 +173,19 @@ a:focus-visible {
 
 .brand-mark {
   display: inline-flex;
-  flex-direction: column;
+  width: 70px;
+  height: 70px;
+  align-items: center;
+  justify-content: center;
   color: hsl(var(--foreground));
-  line-height: 0.8;
   text-decoration: none;
+}
+
+.brand-logo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .brand-mark strong {
@@ -471,9 +480,6 @@ a:focus-visible {
 .booking-dialog {
   position: fixed;
   inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
   margin: auto;
   width: min(92vw, 440px);
   max-width: none;
@@ -486,6 +492,8 @@ a:focus-visible {
   padding: 2rem;
 }
 
+.booking-dialog:not([open]) { display: none; }
+.booking-dialog[open] { display: flex; flex-direction: column; align-items: stretch; }
 .booking-dialog::backdrop { background: rgba(0, 0, 0, .82); backdrop-filter: blur(4px); }
 .booking-dialog-close { position: absolute; top: .8rem; right: .8rem; display: grid; width: 36px; height: 36px; place-items: center; border: 1px solid rgba(238, 233, 223, .2); background: transparent; color: hsl(var(--foreground)); cursor: pointer; }
 .booking-dialog-close:hover { color: hsl(var(--accent)); border-color: hsl(var(--accent)); }
