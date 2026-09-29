@@ -704,52 +704,6 @@ a:focus-visible {
   gap: 1.5rem;
 }
 
-.menu-tabs {
-  display: inline-flex;
-  padding: 4px;
-  border: 1px solid hsl(var(--border));
-  background: hsl(var(--secondary));
-}
-
-.menu-tab {
-  min-width: 120px;
-  padding: .85rem 1rem;
-  border: 0;
-  background: transparent;
-  color: hsl(var(--muted-foreground));
-  cursor: pointer;
-  font-size: .7rem;
-  font-weight: 800;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-}
-
-.menu-tab[aria-selected='true'] {
-  background: hsl(var(--primary));
-  color: hsl(var(--primary-foreground));
-}
-
-.age-note {
-  display: inline-flex;
-  align-items: center;
-  gap: .45rem;
-  color: hsl(var(--muted-foreground));
-  font-size: .68rem;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-.age-note strong {
-  display: inline-grid;
-  width: 26px;
-  height: 26px;
-  place-items: center;
-  border: 1px solid hsl(var(--primary));
-  border-radius: 50%;
-  color: hsl(var(--primary));
-  font-size: .58rem;
-}
-
 .menu-grid {
   display: grid;
   gap: 1rem;

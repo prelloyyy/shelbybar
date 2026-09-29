@@ -5,6 +5,7 @@ import {
   ArrowUpRight,
   CalendarDays,
   Clock3,
+  Dices,
   MapPin,
   Menu as MenuIcon,
   Mic2,
@@ -117,108 +118,6 @@ const kitchenMenu: MenuCategory[] = [
       { name: 'Селёдочка с луком', details: '170 г', price: '400 ₽' },
       { name: 'Фруктовое ассорти', details: '280 г', price: '600 ₽' },
       { name: 'Ореховое ассорти', price: '600 ₽' },
-    ],
-  },
-];
-
-const barMenu: MenuCategory[] = [
-  {
-    number: '01',
-    name: 'Фирменные напитки',
-    items: [
-      { name: '«Красная вдова»', details: '130 мл', price: '550 ₽' },
-      { name: '«Голливудская ночь»', details: '130 мл', price: '550 ₽' },
-      { name: '«Шоу-стоппер»', details: '130 мл', price: '550 ₽' },
-      { name: '«Peaky Fizz»', details: '200 мл', price: '550 ₽' },
-      { name: 'Шот «Пуля Шелби» (Shelby’s Bullet)', details: '50 мл', price: '500 ₽' },
-      { name: 'Шот «Поцелуй Полли» (Polly’s Kiss)', details: '50 мл', price: '500 ₽' },
-      { name: 'Шот «Гангстер» (Gangster’s Shot)', details: '50 мл', price: '500 ₽' },
-    ],
-  },
-  {
-    number: '02',
-    name: 'Классические напитки',
-    items: [
-      { name: 'Джин-тоник', details: '200 мл', price: '400 ₽' },
-      { name: 'Виски-хайбол', details: '200 мл', price: '400 ₽' },
-      { name: 'Коньяк-сода', details: '200 мл', price: '400 ₽' },
-      { name: 'Виски-кола', details: '200 мл', price: '400 ₽' },
-    ],
-  },
-  {
-    number: '03',
-    name: 'Настойки и авторское вино',
-    items: [
-      { name: 'Настойка домашняя (вишня / клюква / смородина)', details: '50 мл', price: '300 ₽' },
-      { name: 'Настойка малиновая', details: '50 мл', price: '300 ₽' },
-      { name: 'Фирменная настойка «Шелби»', details: '50 мл', price: '350 ₽' },
-      { name: 'Сет настоек', price: '900 ₽' },
-      { name: 'Авторское ягодное вино', details: '150 мл', price: '400 ₽' },
-    ],
-  },
-  {
-    number: '04',
-    name: 'Виски',
-    items: [
-      { name: 'Jameson', details: '50 мл', price: '400 ₽' },
-      { name: 'Jack Daniel’s', details: '50 мл', price: '400 ₽' },
-      { name: 'Ballantine’s', details: '50 мл', price: '400 ₽' },
-    ],
-  },
-  {
-    number: '05',
-    name: 'Водка',
-    items: [
-      { name: 'Царская', details: '50 мл', price: '200 ₽' },
-      { name: 'Царская', details: '500 мл', price: '2000 ₽' },
-      { name: 'Онегин', details: '50 мл', price: '750 ₽' },
-      { name: 'Онегин', details: '500 мл', price: '2250 ₽' },
-    ],
-  },
-  {
-    number: '06',
-    name: 'Пиво',
-    items: [
-      { name: 'Krone Blanche Biere', details: '450 мл', price: '280 ₽' },
-      { name: 'Spaten', details: '450 мл', price: '280 ₽' },
-      { name: 'Corona Extra', details: '355 мл', price: '300 ₽' },
-      { name: 'Крушовице', details: '450 мл', price: '280 ₽' },
-    ],
-  },
-  {
-    number: '07',
-    name: 'Безалкогольные лимонады',
-    items: [
-      { name: 'Клубничный лимонад', details: '200 мл', price: '350 ₽' },
-      { name: 'Малиновый мохито', details: '200 мл', price: '350 ₽' },
-      { name: 'Манго-лайм', details: '200 мл', price: '350 ₽' },
-      { name: 'Чёрная смородина с мятой', details: '200 мл', price: '350 ₽' },
-      { name: 'Гранатовый спритц', details: '200 мл', price: '350 ₽' },
-    ],
-  },
-  {
-    number: '08',
-    name: 'Лимонады в графинах',
-    items: [
-      { name: 'Малиновый мохито', details: '1 л', price: '700 ₽' },
-      { name: 'Клубничный бриз', details: '1 л', price: '700 ₽' },
-      { name: 'Манго-голубика', details: '1 л', price: '700 ₽' },
-    ],
-  },
-  {
-    number: '09',
-    name: 'Чай',
-    items: [
-      { name: 'Чай (эрл грей / сенча)', details: '600 мл', price: '400 ₽' },
-      { name: 'Чай авторский с ягодным пюре и мёдом', details: '600 мл', price: '500 ₽' },
-    ],
-  },
-  {
-    number: '10',
-    name: 'Сок',
-    items: [
-      { name: 'Сок в ассортименте', details: '200 мл', price: '90 ₽' },
-      { name: 'Сок в графине в ассортименте', details: '700 мл', price: '300 ₽' },
     ],
   },
 ];
@@ -350,7 +249,7 @@ function Header({ menuOpen, onToggle, onBook }: { menuOpen: boolean; onToggle: (
   );
 }
 
-function MenuCategoryList({ categories, isBar }: { categories: MenuCategory[]; isBar: boolean }) {
+function MenuCategoryList({ categories }: { categories: MenuCategory[] }) {
   return (
     <div className="menu-grid" role="list">
       {categories.map((category, index) => (
@@ -358,7 +257,7 @@ function MenuCategoryList({ categories, isBar }: { categories: MenuCategory[]; i
           <summary>
             <span className="category-title">
               <span className="category-number">{category.number}</span>
-              <span className="category-name">{category.name}{isBar && index === 0 ? ' 18+' : ''}</span>
+              <span className="category-name">{category.name}</span>
             </span>
             <Plus className="category-plus" size={20} aria-hidden="true" />
           </summary>
@@ -381,7 +280,6 @@ function MenuCategoryList({ categories, isBar }: { categories: MenuCategory[]; i
 
 function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [menuTab, setMenuTab] = useState<'kitchen' | 'bar'>('kitchen');
   const [bookingOpen, setBookingOpen] = useState(false);
   const bookingDialogRef = useRef<HTMLDialogElement>(null);
   useReveal();
@@ -451,6 +349,8 @@ function Home() {
                   <div className="perk"><Sparkles size={21} aria-hidden="true" /><h3>Кальянная карта</h3><p>Дымный финал длинного вечера.</p></div>
                   <div className="perk"><Music2 size={21} aria-hidden="true" /><h3>Авторский бар</h3><p>Напитки с характером и своей историей.</p></div>
                   <div className="perk"><CalendarDays size={21} aria-hidden="true" /><h3>Банкеты</h3><p>Дни рождения и корпоративы без сценария.</p></div>
+                  <div className="perk"><Dices size={21} aria-hidden="true" /><h3>Настольные игры</h3><p>Играйте компанией между припевами.</p></div>
+                  <div className="perk"><Dices size={21} aria-hidden="true" /><h3>Игры 18+ с алкоголем</h3><p>Для взрослых гостей и долгих ночей.</p></div>
                 </div>
               </div>
               <div className="about-card reveal reveal-delay-2" aria-label="Атмосфера бара">
@@ -469,17 +369,10 @@ function Home() {
                 <span className="eyebrow">02 / Меню</span>
                 <h2 id="menu-title">Сначала<br />закажите ещё</h2>
               </div>
-              <p>Плотная кухня для долгих ночей и бар, который не просит объяснять свой выбор. Листайте, выбирайте, звоните — остальное уже за нами.</p>
+              <p>Плотная кухня для долгих ночей. Листайте, выбирайте, звоните — остальное уже за нами.</p>
             </div>
-            <div className="menu-intro reveal reveal-delay-1">
-              <div className="menu-tabs" role="tablist" aria-label="Раздел меню">
-                <button className="menu-tab" type="button" role="tab" aria-selected={menuTab === 'kitchen'} onClick={() => setMenuTab('kitchen')}>Кухня</button>
-                <button className="menu-tab" type="button" role="tab" aria-selected={menuTab === 'bar'} onClick={() => setMenuTab('bar')}>Бар</button>
-              </div>
-              {menuTab === 'bar' && <div className="age-note"><strong>18+</strong> Ответственный выбор</div>}
-            </div>
-            <div role="tabpanel" aria-label={menuTab === 'kitchen' ? 'Меню кухни' : 'Барная карта'}>
-              <MenuCategoryList categories={menuTab === 'kitchen' ? kitchenMenu : barMenu} isBar={menuTab === 'bar'} />
+            <div role="tabpanel" aria-label="Меню кухни">
+              <MenuCategoryList categories={kitchenMenu} />
             </div>
           </div>
         </section>
